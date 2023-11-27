@@ -2,8 +2,8 @@ package common;
 
 public interface Task {
 
-    int resolvePart1();
+    String resolvePart1();
 
-    int resolvePart2();
+    String resolvePart2();
 
 }

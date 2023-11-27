@@ -57,7 +57,7 @@ public class Day8 implements Task {
     }
 
     @Override
-    public int resolvePart1() {
+    public String resolvePart1() {
         int numberOfVisibleTrees = 0;
 
         for (int rowIndex = 0; rowIndex < treeGrid.size(); rowIndex++) {
@@ -68,7 +68,7 @@ public class Day8 implements Task {
             }
         }
 
-        return numberOfVisibleTrees;
+        return String.valueOf(numberOfVisibleTrees);
     }
 
     private int getViewDistance(int treeHeight, ArrayList<Integer> neighbours) {
@@ -86,7 +86,7 @@ public class Day8 implements Task {
     }
 
     @Override
-    public int resolvePart2() {
+    public String resolvePart2() {
         int maxScenicScore = 0;
         for (int rowIndex = 0; rowIndex < treeGrid.size(); rowIndex++) {
             for (int columnIndex = 0; columnIndex < treeGrid.get(0).length; columnIndex++) {
@@ -115,6 +115,6 @@ public class Day8 implements Task {
             }
         }
 
-        return maxScenicScore;
+        return String.valueOf(maxScenicScore);
     }
 }

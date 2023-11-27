@@ -91,6 +91,7 @@ public class Day22 implements Task {
                 moveNumberBuilder.append(movesChars[i]);
             }
         }
+        tmpMoves.add(moveNumberBuilder.toString());
 
         return tmpMoves;
     }
@@ -252,26 +253,24 @@ public class Day22 implements Task {
     }
 
     @Override
-    public int resolvePart1() {
+    public String resolvePart1() {
         this.currentField = findStartElement();
         this.currentField.fieldValue = MapFieldValue.RIGHT;
-        for (int i = 0; i < moves.size(); i++) {
-            if (isDirection(moves.get(i))) {
-                changeDirection(moves.get(i));
+        for (String move : moves) {
+            if (isDirection(move)) {
+                changeDirection(move);
             } else {
-                move(moves.get(i));
+                move(move);
             }
-//            System.out.println("Iteration " + i);
-//            displayMap();
         }
         displayMap();
         System.out.println(currentField);
-        return 1000 * (this.currentField.y + 1) + 4 * (this.currentField.x + 1);
+        return String.valueOf(1000 * (this.currentField.y + 1) + 4 * (this.currentField.x + 1));
     }
 
     @Override
-    public int resolvePart2() {
-        return 0;
+    public String resolvePart2() {
+        return "0";
     }
 }
 

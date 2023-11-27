@@ -5,14 +5,16 @@ import lombok.Getter;
 import lombok.Setter;
 import utils.FileUtils;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Day20 implements Task {
     FileUtils fileUtils;
 
-    ArrayList<Integer> originalArray;
+    ArrayList<Node> originalArray;
     ArrayList<Node> nodes = new ArrayList<>();
+
+    BigInteger multiplier = new BigInteger("811589153");
 
     public Day20() {
         fileUtils = new FileUtils();
@@ -24,11 +26,12 @@ public class Day20 implements Task {
     private void fillArraysWithInputData(String fileLines) {
         String[] linesArr = fileLines.split("\n");
 
-        originalArray = new ArrayList<Integer>(Arrays.stream(linesArr).map(Integer::parseInt).toList());
+        originalArray = new ArrayList<Node>();
 
         for (String s : linesArr) {
-            Node newNode = new Node(Integer.parseInt(s));
+            Node newNode = new Node(new BigInteger(s));
             nodes.add(newNode);
+            originalArray.add(newNode);
         }
 
         for (int i = 0; i < nodes.size(); i++) {
@@ -46,7 +49,7 @@ public class Day20 implements Task {
     }
 
     private void mixNode(Node currentNode) {
-        int amountOfMoves = (Math.abs(currentNode.getValue()) % (nodes.size() - 1));
+        int amountOfMoves = currentNode.getValue().abs().mod(new BigInteger(String.valueOf(nodes.size() - 1))).intValue();
         if (amountOfMoves == 0) return;
 
         Node tmpPrevNode = currentNode.getPreviousNeighbour();
@@ -56,7 +59,7 @@ public class Day20 implements Task {
         tmpNextNode.setPreviousNeighbour(tmpPrevNode);
 
         Node tmpNode = currentNode;
-        if (tmpNode.getValue() > 0) {
+        if (tmpNode.getValue().signum() > 0) {
             for (int i = 0; i < amountOfMoves; i++) {
                 tmpNode = tmpNode.getNextNeighbour();
             }
@@ -65,7 +68,7 @@ public class Day20 implements Task {
             currentNode.setNextNeighbour(tmpNode.getNextNeighbour());
             tmpNode.getNextNeighbour().setPreviousNeighbour(currentNode);
             tmpNode.setNextNeighbour(currentNode);
-        } else if (tmpNode.getValue() < 0) {
+        } else if (tmpNode.getValue().signum() < 0) {
             for (int i = 0; i < amountOfMoves; i++) {
                 tmpNode = tmpNode.getPreviousNeighbour();
             }
@@ -98,40 +101,53 @@ public class Day20 implements Task {
     }
 
     @Override
-    public int resolvePart1() {
+    public String resolvePart1() {
         for (int index = 0; index < originalArray.size(); index++) {
             int finalIndex = index;
-//            printNodesAsArray();
-            mixNode(nodes.stream().filter(node -> node.getValue() == originalArray.get(finalIndex)).findFirst().orElseThrow());
+            mixNode(nodes.stream().filter(node -> node == originalArray.get(finalIndex)).findFirst().orElseThrow());
         }
-        printNodesAsArray();
-        Node nodeWithZero = nodes.stream().filter(node -> node.getValue() == 0).findFirst().orElseThrow();
+        Node nodeWithZero = nodes.stream().filter(node -> node.getValue().signum() == 0).findFirst().orElseThrow();
 
         Node firstCoordinate = findNeighbour(nodeWithZero, 1000);
         Node secondCoordinate = findNeighbour(nodeWithZero, 2000);
         Node thirdCoordinate = findNeighbour(nodeWithZero, 3000);
 
-        System.out.println(firstCoordinate);
-        System.out.println(secondCoordinate);
-        System.out.println(thirdCoordinate);
+        return firstCoordinate.getValue().add(secondCoordinate.getValue()).add(thirdCoordinate.getValue()).toString();
+    }
 
-        return firstCoordinate.getValue() + secondCoordinate.getValue() + thirdCoordinate.getValue();
+    void multiplyAllElementsByMultiplier() {
+        for (Node node : originalArray) {
+            node.setValue(node.getValue().multiply(multiplier));
+        }
     }
 
     @Override
-    public int resolvePart2() {
-        return 0;
+    public String resolvePart2() {
+        multiplyAllElementsByMultiplier();
+        for (int i = 0; i < 10; i++) {
+            for (int index = 0; index < originalArray.size(); index++) {
+                int finalIndex = index;
+                mixNode(nodes.stream().filter(node -> node == originalArray.get(finalIndex)).findFirst().orElseThrow());
+            }
+        }
+        Node nodeWithZero = nodes.stream().filter(node -> node.getValue().signum() == 0).findFirst().orElseThrow();
+
+        Node firstCoordinate = findNeighbour(nodeWithZero, 1000);
+        Node secondCoordinate = findNeighbour(nodeWithZero, 2000);
+        Node thirdCoordinate = findNeighbour(nodeWithZero, 3000);
+
+        return firstCoordinate.getValue().add(secondCoordinate.getValue()).add(thirdCoordinate.getValue()).toString();
     }
 }
 
 @Setter
 @Getter
-class Node {
+class Node{
     private Node nextNeighbour;
     private Node previousNeighbour;
-    private int value;
+    private BigInteger value;
 
-    public Node(int value) {
+    public Node(BigInteger value) {
         this.value = value;
     }
 

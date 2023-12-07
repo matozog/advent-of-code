@@ -3,6 +3,8 @@ import Day2.Day2;
 import Day3.Day3;
 import Day4.Day4;
 import Day5.Day5;
+import Day6.Day6;
+import Day7.Day7;
 
 public class Main2023 {
     public static void main(String[] args) {
@@ -28,7 +30,17 @@ public class Main2023 {
 
         // DAY 5
         Day5 day5 = new Day5();
-        System.out.println(day5.resolvePart1());
-//        System.out.println(day5.resolvePart2());
+//        System.out.println(day5.resolvePart1());
+        System.out.println(day5.resolvePart2());
+
+        // DAY 6
+//        Day6 day6 = new Day6();
+//        System.out.println(day6.resolvePart1());
+//        System.out.println(day6.resolvePart2());
+
+        // DAY 7
+//        Day7 day7 = new Day7();
+//        System.out.println(day7.resolvePart1());
+//        System.out.println(day7.resolvePart2());
     }
 }

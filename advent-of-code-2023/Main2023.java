@@ -5,6 +5,8 @@ import Day4.Day4;
 import Day5.Day5;
 import Day6.Day6;
 import Day7.Day7;
+import Day9.Day9;
+import Day8.Day8;
 
 public class Main2023 {
     public static void main(String[] args) {
@@ -29,9 +31,9 @@ public class Main2023 {
 //        System.out.println(day4.resolvePart2());
 
         // DAY 5
-        Day5 day5 = new Day5();
+//        Day5 day5 = new Day5();
 //        System.out.println(day5.resolvePart1());
-        System.out.println(day5.resolvePart2());
+//        System.out.println(day5.resolvePart2());
 
         // DAY 6
 //        Day6 day6 = new Day6();
@@ -42,5 +44,15 @@ public class Main2023 {
 //        Day7 day7 = new Day7();
 //        System.out.println(day7.resolvePart1());
 //        System.out.println(day7.resolvePart2());
+
+        // DAY 8
+        Day8 day8 = new Day8();
+        System.out.println(day8.resolvePart1());
+//        System.out.println(day8.resolvePart2());
+
+        // DAY 9
+//        Day9 day9 = new Day9();
+//        System.out.println(day9.resolvePart1());
+//        System.out.println(day9.resolvePart2());
     }
 }

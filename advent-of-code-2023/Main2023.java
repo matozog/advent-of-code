@@ -2,6 +2,9 @@ import Day1.Day1;
 import Day10.Day10;
 import Day11.Day11;
 import Day12.Day12;
+import Day13.Day13;
+import Day14.Day14;
+import Day15.Day15;
 import Day2.Day2;
 import Day3.Day3;
 import Day4.Day4;
@@ -59,18 +62,38 @@ public class Main2023 {
 //        System.out.println(day9.resolvePart2());
 
         // DAY 10
-        Day10 day10 = new Day10();
+//        Day10 day10 = new Day10();
 //        System.out.println(day10.resolvePart1());
-        System.out.println(day10.resolvePart2());
+//        System.out.println(day10.resolvePart2());
 
         // DAY 11
 //        Day11 day11 = new Day11();
 //        System.out.println(day11.resolvePart1());
 //        System.out.println(day11.resolvePart2());
 
-        // DAY 11
+        // DAY 12
 //        Day12 day12 = new Day12();
 //        System.out.println(day12.resolvePart1());
 //        System.out.println(day12.resolvePart2());
+
+//      DAY 13
+//        Day13 day13 = new Day13();
+//        System.out.println(day13.resolvePart1());
+//        System.out.println(day13.resolvePart2());
+
+        // DAY 14
+//        Day14 day14 = new Day14();
+//        System.out.println(day14.resolvePart1());
+//        System.out.println(day14.resolvePart2());
+
+        // DAY 15
+        Day15 day15 = new Day15();
+//        System.out.println(day15.resolvePart1());
+        System.out.println(day15.resolvePart2());
+
+        // DAY 16
+//        Day16 day16 = new Day16();
+//        System.out.println(day16.resolvePart1());
+//        System.out.println(day16.resolvePart2());
     }
 }

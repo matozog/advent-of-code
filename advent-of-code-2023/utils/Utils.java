@@ -20,4 +20,9 @@ public class Utils {
     public static BigInteger lcm(BigInteger a, BigInteger b) {
         return a.multiply(b).divide(gcd(a, b));
     }
+
+    public static boolean isInBounds(int x, int y, int rowLength, int columnLength) {
+        return x >= 0 && x < columnLength && y >= 0 && y < rowLength;
+    }
 }
+

@@ -6,7 +6,6 @@ import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Day14 {
     FileUtils fileUtils = new FileUtils();
@@ -112,50 +111,35 @@ public class Day14 {
         return getTotalLoad();
     }
 
-    boolean areMapsSame(char[][] map1, char[][] map2) {
-        for (int i = 0; i < map1.length; i++) {
-            if (!Arrays.equals(map1[i], map2[i])) {
-                return false;
-            }
-        }
-        return true;
+    void spinCycle() {
+        moveMapElementsToNorth();
+        moveMapElementsToWest();
+        moveMapElementsToSouth();
+        moveMapElementsToEast();
     }
 
     public long resolvePart2() {
         List<String> mapList = new ArrayList<>();
-        List<String> tmpList = new ArrayList<>();
+        char[][] clonedMap = new char[map.length][];
+
+        for (int i = 0; i < clonedMap.length; i++)
+            clonedMap[i] = map[i].clone();
 
         long iterations = 1000000000L;
-        int distance = 0, currentDistance = 1;
-        int lastIndex = 0;
-        String firstSequence = "";
-        String tmpMap = Arrays.deepToString(map);
-        mapList.add(tmpMap);
+        String head = "";
 
-        while (mapList.size() != 1000) {
-            moveMapElementsToNorth();
-            moveMapElementsToWest();
-            moveMapElementsToSouth();
-            moveMapElementsToEast();
-            tmpMap = Arrays.deepToString(map);
-            if (mapList.contains(tmpMap)) {
-                if (firstSequence.equals("")) {
-                    firstSequence = tmpMap;
-                }
-            }
-            mapList.add(tmpMap);
-            if(tmpMap.equals(firstSequence)) System.out.println(mapList.size());
+        while (!mapList.contains(head)) {
+            if (!head.equals("")) mapList.add(head);
+            spinCycle();
+            head = Arrays.deepToString(map);
         }
-//
-//        mapList.add(tmpMap);
 
-//        int index = mapList.indexOf(tmpMap);
+        int cycleLength = mapList.size() - mapList.indexOf(head);
+        int cycleStart = mapList.indexOf(head);
 
-        for (int i = 0; i < (iterations-143) % 34; i++) {
-            moveMapElementsToNorth();
-            moveMapElementsToWest();
-            moveMapElementsToSouth();
-            moveMapElementsToEast();
+        map = clonedMap;
+        for (long i = 0; i < ((cycleStart) + ((iterations - cycleStart) % cycleLength)); i++) {
+            spinCycle();
         }
 
         return getTotalLoad();

@@ -1,7 +1,7 @@
 package aoc2023.Day4;
 
+import aoc2023.utils.Utils;
 import utils.FileUtils;
-import utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,9 +1,9 @@
 package aoc2023.Day16;
 
+import aoc2023.utils.Point;
+import aoc2023.utils.Utils;
 import lombok.EqualsAndHashCode;
 import utils.FileUtils;
-import utils.Point;
-import utils.Utils;
 
 import java.util.*;
 import java.util.stream.Collectors;

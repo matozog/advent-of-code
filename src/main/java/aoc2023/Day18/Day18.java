@@ -1,7 +1,7 @@
 package aoc2023.Day18;
 
+import aoc2023.utils.Point;
 import utils.FileUtils;
-import utils.Point;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -7,7 +7,9 @@ import aoc2023.Day14.Day14;
 import aoc2023.Day15.Day15;
 import aoc2023.Day16.Day16;
 import aoc2023.Day18.Day18;
+import aoc2023.Day19.Day19;
 import aoc2023.Day2.Day2;
+import aoc2023.Day21.Day21;
 import aoc2023.Day22.Day22;
 import aoc2023.Day3.Day3;
 import aoc2023.Day4.Day4;
@@ -109,9 +111,19 @@ public class Main2023 {
 //        System.out.println(day18.resolvePart1());
 //        System.out.println(day18.resolvePart2());
 
+        // DAY 19
+        Day19 day19 = new Day19();
+        System.out.println(day19.resolvePart1());
+//        System.out.println(day19.resolvePart2());
+
+        // DAY 21
+//        Day21 day21 = new Day21();
+//        System.out.println(day21.resolvePart1());
+//        System.out.println(day22.resolvePart2());
+
         // DAY 22
-        Day22 day22 = new Day22();
-        System.out.println(day22.resolvePart1());
+//        Day22 day22 = new Day22();
+//        System.out.println(day22.resolvePart1());
 //        System.out.println(day22.resolvePart2());
     }
 }

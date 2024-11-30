@@ -1,5 +1,6 @@
 .idea
 advent-of-code.iml
 out/
+target
 
-src/main/java/advent-of-code-2022/.idea
+src/main/java/aoc2022/.idea

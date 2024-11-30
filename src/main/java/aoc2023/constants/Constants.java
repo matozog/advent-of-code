@@ -1,4 +1,4 @@
-package constants;
+package aoc2023.constants;
 
 import java.util.HashMap;
 import java.util.Map;

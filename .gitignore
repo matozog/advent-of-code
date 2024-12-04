@@ -4,3 +4,5 @@ out/
 target
 
 src/main/java/aoc2022/.idea
+
+**/input.txt

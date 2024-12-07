@@ -1,6 +1,7 @@
 package commons;
 
 import java.math.BigInteger;
+import java.util.List;
 
 public class Utils {
 
@@ -34,6 +35,17 @@ public class Utils {
             return true;
         }
         return isPoint3DBetweenTwoPoints(secondLineStart, firstLineStart, firstLineEnd) || isPoint3DBetweenTwoPoints(secondLineEnd, firstLineStart, firstLineEnd);
+    }
+
+    public static void generateCharactersPermutationArray(List<char[]> operators, char[] possibleChars, String currentStr, int size) {
+        if (currentStr.length() == size) {
+            operators.add(currentStr.toCharArray());
+            return;
+        }
+
+        for (char possibleChar : possibleChars) {
+            generateCharactersPermutationArray(operators, possibleChars, currentStr + possibleChar, size);
+        }
     }
 }
 

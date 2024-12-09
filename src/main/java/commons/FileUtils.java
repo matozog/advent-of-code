@@ -8,11 +8,11 @@ import java.util.stream.Stream;
 
 public class FileUtils {
 
-    public String getFileLinesAsStringByDelimiter(String filePath, String delimiter) {
+    public static String getFileLinesAsStringByDelimiter(String filePath, String delimiter) {
         try {
             File file = new File(filePath);
 
-            Stream<String> lines = null;
+            Stream<String> lines;
             lines = Files.lines(file.toPath());
             String data = lines.collect(Collectors.joining(delimiter));
             lines.close();

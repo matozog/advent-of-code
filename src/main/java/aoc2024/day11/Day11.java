@@ -1,12 +1,12 @@
-package aoc2024.day5;
+package aoc2024.day11;
 
 import commons.FileUtils;
 import commons.Task;
 
-public class Day5 implements Task<Integer> {
+public class Day11 implements Task<Integer> {
     String fileLine;
 
-    public Day5() {
+    public Day11() {
         fileLine = FileUtils.getFileLinesAsStringByDelimiter("src/main/java/aoc2024/day10/input.txt", "\n");
     }
 

@@ -1,7 +1,6 @@
 package aoc2024.day10;
 
 import commons.FileUtils;
-import commons.Point;
 import commons.Task;
 import lombok.EqualsAndHashCode;
 
@@ -10,7 +9,6 @@ import java.util.*;
 public class Day10 implements Task<Integer> {
     String fileLine;
     Map<String, Node> nodes = new HashMap<>();
-    Map<String, List<Point>> points = new HashMap<>();
 
     public String generateKey(int rowIndex, int columnIndex) {
         return rowIndex + "_" + columnIndex;

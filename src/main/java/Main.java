@@ -8,6 +8,6 @@ public class Main {
     static Aoc2024 aoc2024 = new Aoc2024();
 
     public static void main(String[] args) {
-        aoc2024.resolveDay(11, 2);
+        aoc2024.resolveDay(5, 2);
     }
 }

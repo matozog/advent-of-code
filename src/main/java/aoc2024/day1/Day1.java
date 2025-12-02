@@ -7,13 +7,12 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 public class Day1 implements Task<Integer> {
-    FileUtils fileUtils = new FileUtils();
     String fileLines;
     ArrayList<Integer> list1 = new ArrayList<>();
     ArrayList<Integer> list2 = new ArrayList<>();
 
     public Day1() {
-        fileLines = fileUtils.getFileLinesAsStringByDelimiter("src/main/java/aoc2024/day1/input.txt", "\n");
+        fileLines = FileUtils.getFileLinesAsStringByDelimiter("src/main/java/aoc2024/day1/input.txt", "\n");
 
         Arrays.stream(fileLines.split("\n")).forEach(line -> {
             String[] locations = line.split(" {3}");

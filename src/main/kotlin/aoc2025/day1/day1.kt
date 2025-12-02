@@ -11,27 +11,6 @@ fun main() {
     println("Part 2: " + part2(movements))
 }
 
-fun <T> List<T>.loopIndex(i: Int): T {
-    val index = ((i % size) + size) % size
-    return this[index]
-}
-
-fun part1_list(movements: List<String>): Int {
-    var pointsZero = 0;
-    val numbers = (0..99).toList();
-    var steps: Int;
-    var pointer = numbers.get(50);
-
-    for (move in movements) {
-        steps = move.substring(1).toInt() % 100;
-
-        pointer = if (move.first() == 'R') numbers.loopIndex(pointer + steps) else numbers.loopIndex(pointer - steps);
-        if (pointer == 0) pointsZero++;
-    }
-
-    return pointsZero;
-}
-
 fun part1(movements: List<String>): Int {
     var pointToZero = 0;
     var position = 50;
